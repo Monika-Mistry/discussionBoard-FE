@@ -9,6 +9,7 @@ function App() {
   return (
     <div>
       <NavBar />
+      <br></br>
       <ItemPage />
     </div>
 

@@ -47,12 +47,11 @@ export class ItemPage extends Component {
             message: event.target[2].value
         };
 
-
         Axios.post("http://localhost:5000/storage/addItem", item).then(response => {
-            if (response.status === 200) {
+            if (response.status === 200 && response.data.isValid) {
                 this.getAllItems();
             } else {
-                console.log(response);
+                console.table(response.data.errors);
             }
 
         }).catch(err => { console.log(err.message) });
@@ -62,6 +61,7 @@ export class ItemPage extends Component {
         return (
             <div>
                 <NewItem addItem={this.addItem} />
+                <br></br>
                 <ItemTable data={this.state.data} deleteItem={this.deleteItem} />
             </div>
         );
