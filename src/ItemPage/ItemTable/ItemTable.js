@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Table } from 'reactstrap';
 
 import { Item } from './Item/Item';
@@ -14,7 +14,7 @@ export function ItemTable(props) {
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <Item data={props.data}/>
+                <Item data={props.data} deleteItem={props.deleteItem} />
             </Table>
         </div>
 
