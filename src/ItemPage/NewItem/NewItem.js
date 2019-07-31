@@ -5,24 +5,14 @@ import {
     Label,
     Input,
     Col,
-    Button
+    Button,
+    FormFeedback
 } from 'reactstrap';
 
 export function NewItem(props) {
-    if (props.error.username !== undefined) {
-        const username = props.error.username;
-        console.log(username);
-    }
-
-    if (props.error.email !== undefined) {
-        const email = props.error.email;
-        console.log(email);
-    }
-
-    if (props.error.message !== undefined) {
-        const message = props.error.message;
-        console.log(message);
-    }
+    let username = props.error.username !== undefined ? props.error.username : "";
+    let email = props.error.email !== undefined ? props.error.email : "";
+    let message = props.error.message !== undefined ? props.error.message : "";
 
     return (
         <Form className="container" onSubmit={props.addItem}>
@@ -34,7 +24,9 @@ export function NewItem(props) {
                         type="text"
                         name="username"
                         id="username"
-                        placeholder="Enter your username" />
+                        placeholder="Enter your username"
+                        invalid={username !== ""} />
+                    <FormFeedback invalid>{username}</FormFeedback>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -45,7 +37,9 @@ export function NewItem(props) {
                         type="email"
                         name="email"
                         id="email"
-                        placeholder="Enter your email" />
+                        placeholder="Enter your email"
+                        invalid={email !== ""}  />
+                    <FormFeedback>{email}</FormFeedback>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -56,7 +50,9 @@ export function NewItem(props) {
                         type="textarea"
                         name="message"
                         id="message"
-                        placeholder="Enter your message" />
+                        placeholder="Enter your message"
+                        invalid={message !== ""}  />
+                    <FormFeedback>{message}</FormFeedback>
                 </Col>
             </FormGroup>
             <div className="text-center">

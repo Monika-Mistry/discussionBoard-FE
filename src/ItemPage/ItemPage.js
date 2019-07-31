@@ -42,6 +42,9 @@ export class ItemPage extends Component {
 
     addItem = event => {
         event.preventDefault();
+        this.setState({
+            errors: {}
+        });
         const item = {
             username: event.target[0].value,
             email: event.target[1].value,
