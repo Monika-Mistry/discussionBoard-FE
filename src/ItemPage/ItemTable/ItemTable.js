@@ -10,7 +10,7 @@ export function ItemTable(props) {
                 <thead>
                     <tr>
                         <th>Username</th>
-                        <th>Content</th>
+                        <th>Message</th>
                         <th>Delete</th>
                     </tr>
                 </thead>

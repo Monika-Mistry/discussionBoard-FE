@@ -41,7 +41,11 @@ export function NewItem(props) {
                         placeholder="Enter your message" />
                 </Col>
             </FormGroup>
-            <Button>Submit</Button>
+            <div className="text-center">
+                <Button>Submit</Button>
+            </div>
+
+
         </Form>
     )
 }
