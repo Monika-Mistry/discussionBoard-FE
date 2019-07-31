@@ -13,7 +13,7 @@ import {
     faSignInAlt,
     faUser
 } from '@fortawesome/free-solid-svg-icons';
-import { NavLink as RRNavLink, BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { NavLink as RRNavLink, BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { ItemPage } from '../ItemPage/ItemPage';
 import { RegisterForm } from '../RegisterForm/RegisterForm';
@@ -36,7 +36,7 @@ export class NavBar extends Component {
         return (
             <Router>
                 <Navbar color="dark" dark expand="md">
-                    <NavbarBrand tag={RRNavLink} exact to="/">Discussion Board</NavbarBrand>
+                    <NavbarBrand tag={RRNavLink} to="/">Discussion Board</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
