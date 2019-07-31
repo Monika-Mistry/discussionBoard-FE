@@ -3,6 +3,7 @@ import Axios from 'axios';
 
 import { NewItem } from './NewItem/NewItem';
 import { ItemTable } from './ItemTable/ItemTable';
+import { getURL, addURL, deleteURL } from '../Constants';
 
 export class ItemPage extends Component {
     constructor() {
@@ -18,7 +19,7 @@ export class ItemPage extends Component {
     }
 
     getAllItems = () => {
-        Axios.get("http://localhost:5000/storage/order")
+        Axios.get(getURL)
             .then(response => {
                 this.setState({
                     data: response.data
@@ -28,7 +29,7 @@ export class ItemPage extends Component {
 
     deleteItem = event => {
         event.preventDefault();
-        Axios.delete("http://localhost:5000/storage/deleteItem", { data: { _id: event.target.getAttribute("data") } })
+        Axios.delete(deleteURL, { data: { _id: event.target.getAttribute("data") } })
             .then(response => {
                 if (response.status === 200) {
                     this.getAllItems();
@@ -51,7 +52,7 @@ export class ItemPage extends Component {
             message: event.target[2].value
         };
 
-        Axios.post("http://localhost:5000/storage/addItem", item).then(response => {
+        Axios.post(addURL, item).then(response => {
             if (response.status === 200 && typeof response.data === 'string') {
                 this.getAllItems();
             } else {
