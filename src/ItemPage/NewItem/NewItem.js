@@ -10,9 +10,9 @@ import {
 } from 'reactstrap';
 
 export function NewItem(props) {
-    let username = props.error.username !== undefined ? props.error.username : "";
-    let email = props.error.email !== undefined ? props.error.email : "";
-    let message = props.error.message !== undefined ? props.error.message : "";
+    let username = props.error.username;
+    let email = props.error.email;
+    let message = props.error.message;
 
     return (
         <Form className="container" onSubmit={props.addItem}>
@@ -25,7 +25,7 @@ export function NewItem(props) {
                         name="username"
                         id="username"
                         placeholder="Enter your username"
-                        invalid={username !== ""} />
+                        invalid={username !== undefined} />
                     <FormFeedback invalid>{username}</FormFeedback>
                 </Col>
             </FormGroup>
@@ -38,7 +38,7 @@ export function NewItem(props) {
                         name="email"
                         id="email"
                         placeholder="Enter your email"
-                        invalid={email !== ""}  />
+                        invalid={email !== undefined}  />
                     <FormFeedback>{email}</FormFeedback>
                 </Col>
             </FormGroup>
@@ -51,7 +51,7 @@ export function NewItem(props) {
                         name="message"
                         id="message"
                         placeholder="Enter your message"
-                        invalid={message !== ""}  />
+                        invalid={message !== undefined}  />
                     <FormFeedback>{message}</FormFeedback>
                 </Col>
             </FormGroup>
