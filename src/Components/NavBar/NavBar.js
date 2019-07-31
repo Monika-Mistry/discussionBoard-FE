@@ -52,8 +52,8 @@ export class NavBar extends Component {
                 <br></br>
 
                 <Route exact path="/" component={ItemPage} />
-                <Route exact path="/register" component={RegisterForm} />
-                <Route exact path="/login" component={LoginForm} />
+                <Route path="/register" component={RegisterForm} />
+                <Route path="/login" component={LoginForm} />
 
             </Router>
         )
