@@ -8,7 +8,8 @@ export class ItemPage extends Component {
     constructor() {
         super();
         this.state = {
-            data: []
+            data: [],
+            errors: {}
         }
     }
 
@@ -48,19 +49,20 @@ export class ItemPage extends Component {
         };
 
         Axios.post("http://localhost:5000/storage/addItem", item).then(response => {
-            if (response.status === 200 && response.data.isValid) {
+            if (response.status === 200 && typeof response.data === 'string') {
                 this.getAllItems();
             } else {
-                console.table(response.data.errors);
+                this.setState({
+                    errors: response.data.errors
+                })
             }
-
         }).catch(err => { console.log(err.message) });
     }
 
     render() {
         return (
             <div>
-                <NewItem addItem={this.addItem} />
+                <NewItem error={this.state.errors} addItem={this.addItem} />
                 <br></br>
                 <ItemTable data={this.state.data} deleteItem={this.deleteItem} />
             </div>

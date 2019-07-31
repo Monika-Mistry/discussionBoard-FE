@@ -9,12 +9,28 @@ import {
 } from 'reactstrap';
 
 export function NewItem(props) {
+    if (props.error.username !== undefined) {
+        const username = props.error.username;
+        console.log(username);
+    }
+
+    if (props.error.email !== undefined) {
+        const email = props.error.email;
+        console.log(email);
+    }
+
+    if (props.error.message !== undefined) {
+        const message = props.error.message;
+        console.log(message);
+    }
+
     return (
         <Form className="container" onSubmit={props.addItem}>
             <FormGroup row>
                 <Label for="username" sm={2}>Username</Label>
                 <Col sm={10}>
                     <Input
+                        required
                         type="text"
                         name="username"
                         id="username"
@@ -25,6 +41,7 @@ export function NewItem(props) {
                 <Label for="email" sm={2}>Email</Label>
                 <Col sm={10}>
                     <Input
+                        required
                         type="email"
                         name="email"
                         id="email"
@@ -35,6 +52,7 @@ export function NewItem(props) {
                 <Label for="message" sm={2}>Message</Label>
                 <Col sm={10}>
                     <Input
+                        required
                         type="textarea"
                         name="message"
                         id="message"
@@ -44,8 +62,6 @@ export function NewItem(props) {
             <div className="text-center">
                 <Button>Submit</Button>
             </div>
-
-
         </Form>
     )
 }
